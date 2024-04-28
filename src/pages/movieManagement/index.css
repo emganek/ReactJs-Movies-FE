@@ -1,0 +1,18 @@
+.movie-image{
+    width:50px;
+}
+
+.anticon-delete.delete-button{
+    color:red;
+    font-size: var(--header-fs-1);
+}
+
+.anticon-edit.edit-button{
+    color:blue;
+    font-size: var(--header-fs-1);
+}
+
+.anticon-schedule.schedule-button{
+    color:green;
+    font-size: var(--header-fs-1);
+}

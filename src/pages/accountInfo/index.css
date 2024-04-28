@@ -1,0 +1,46 @@
+@media screen and (min-width:768px) {
+    #account-info{
+        min-height: 70vh;
+   }
+
+   #account-info .ant-tabs.ant-tabs-top{
+    margin-top:6rem;
+   }
+}
+
+
+
+
+
+#account-info  label{
+     color:var(--clr-font-dark) !important;
+}
+
+#account-info  input.ant-input[disabled], #account-info  #soDT[disabled], #account-info  .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    color:rgba(0, 0, 0, 0.5) !important;
+}
+
+#account-info .ant-tabs {
+    width: 80%;
+    color:var(--clr-font-dark);
+    font-size: var(--header-fs-1);
+}
+
+#account-info .ant-tabs-tab .ant-tabs-tab-btn{
+    color:var(--clr-font-dark) !important;
+}
+
+
+#account-info .ant-tabs-tab-active .ant-tabs-tab-btn{
+    color:var(--clr-font-hover) !important;
+    font-weight: bold;
+}
+
+
+#account-info .ant-tabs-tab .ant-tabs-tab-btn:hover{
+    color:var(--clr-font-hover) !important;
+}
+
+#account-info .ant-tabs-ink-bar{
+    background-color: var(--clr-font-hover) !important;
+}

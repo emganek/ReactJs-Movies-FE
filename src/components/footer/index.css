@@ -1,0 +1,134 @@
+/* -- FOOTER------------------------- */
+#footer {
+    background-color: #060e1f;
+    position: relative;
+}
+
+/* -- FOOTER LIST------------ */
+.footer__list {
+    padding-top: var(--header-py);
+}
+
+.footer__item h6 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(23, 54, 88, 0.4);
+    line-height: 40px;
+}
+
+.footer__item ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.footer__item ul li {
+    margin-bottom: 1rem;
+}
+
+.footer__item a {
+    color: #cecece;
+    font-size: 13px;
+    transition: color .5s;
+}
+
+.footer__item a span {
+    margin-right: 5px;
+}
+
+.footer__item li:hover a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer__item2 {
+    border-right: 1px solid rgba(23, 54, 88, 0.4);
+    padding-right: 1rem;
+}
+
+@media screen and (max-width:991px) {
+    .footer__item2 {
+        border-right: none !important;
+    }
+}
+
+.footer__item2 h6 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(23, 54, 88, 0.4);
+    line-height: 40px;
+}
+
+.footer__item2 ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.footer__item2 ul li {
+    margin-bottom: 1.5rem;
+}
+
+.footer__item2 a {
+    color: #cecece;
+    font-size: 15px;
+    transition: color .5s;
+}
+
+.footer__item2 a span {
+    margin-right: 10px;
+}
+
+.footer__item2 li:hover a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer__item3 h6 {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(23, 54, 88, 0.4);
+    line-height: 40px;
+}
+
+.footer__item3 p {
+    font-size: 12px;
+    color: #eee;
+    margin-bottom: 1.5rem;
+}
+
+.footer__item3 ul {
+    padding-left: 0px;
+}
+
+.footer__item3 ul li {
+    display: inline;
+    text-align: center;
+    transition: opacity .5s;
+    cursor: pointer;
+}
+
+.footer__item3 li i {
+    font-size: 16px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 30px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: white;
+}
+
+.footer__item3 ul li:hover {
+    opacity: .8;
+}
+
+/* COPY RIGHT------------------- */
+.copyRight {
+    padding: 1rem 0rem;
+    text-align: center;
+    background-color: #040a17;
+    color: gray;
+    font-size: 14px;
+}

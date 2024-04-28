@@ -1,0 +1,24 @@
+#register-form{
+    width:90%;
+    margin: 2rem auto;
+}
+
+@media screen and (min-width:768px) {
+    #register-form{
+        height: 60vh;
+        margin: 2rem auto;
+    }
+    
+    #register-form .card{
+        top:50%;
+        transform: translateY(-50%);
+    }
+}
+
+@media screen and (min-width:1200px) {
+    #register-form{
+        height: 60vh;
+        margin: 3rem auto;
+        width:60%;
+    }
+}

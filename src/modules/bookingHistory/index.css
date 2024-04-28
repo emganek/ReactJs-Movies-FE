@@ -1,0 +1,23 @@
+#booking-history-wrapper .movie-image img {
+    width: 100%;
+}
+
+#booking-history-wrapper .booking-history-item{
+    border: 1px solid  rgba(255, 255, 255, 0.2);
+}
+
+#booking-history-wrapper .booking-history-item .movie-image {
+    padding:0px;
+}
+
+#booking-history-wrapper .booking-history-item h4 {
+    color: var(--clr-font-hover);
+}
+
+#booking-history-wrapper .booking-history-item h5 {
+    color: var(--clr-font-dark);
+}
+
+#booking-history-wrapper .booking-history-item h6 {
+    color: var(--clr-font-detail-dark);
+}

@@ -1,0 +1,48 @@
+$size-ghe: 50px;
+$margin-ghe: 3px;
+$clr-ghe: #ccc;
+$clr-ghe-vip: pink;
+$clr-ghe-daDat: gray;
+$clr-ghe-dangDat: yellow;
+
+.ghe {
+    width: $size-ghe;
+    height: $size-ghe;
+    background-color: $clr-ghe;
+    margin-right: $margin-ghe;
+    margin-bottom: $margin-ghe;
+    
+    &.gheVip {
+        background-color: $clr-ghe-vip;
+    }
+
+    &.dangDat {
+        background-color: $clr-ghe-dangDat;
+    }
+    
+    &.daDat {
+        background-color: $clr-ghe-daDat;
+        cursor: not-allowed;
+    }
+}
+
+.ghe-sample {
+    width: 30px;
+    height: 30px;
+    background-color: $clr-ghe;
+    margin-right: $margin-ghe;
+    margin-bottom: $margin-ghe;
+    
+    &.gheVip {
+        background-color: $clr-ghe-vip;
+    }
+
+    &.dangDat {
+        background-color: $clr-ghe-dangDat;
+    }
+    
+    &.daDat {
+        background-color: $clr-ghe-daDat;
+        cursor: not-allowed;
+    }
+}

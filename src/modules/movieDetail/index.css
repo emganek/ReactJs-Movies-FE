@@ -1,0 +1,11 @@
+#movie-detail .movie-detail-tenPhim{
+    color: var(--clr-font-hover);
+}
+
+#movie-detail .movie-detail-moTa , #movie-detail .movie-detail-ngayKhoiChieu{
+    color: var(--clr-font-detail-dark);
+}
+
+#movie-detail .movie-detail-ngayKhoiChieu span{
+    text-decoration: underline;
+}

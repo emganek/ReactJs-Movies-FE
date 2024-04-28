@@ -1,0 +1,57 @@
+#movieList .nav li {
+    color: var(--clr-font-dark) !important;
+    text-decoration: none;
+    margin-right:1rem;
+    display: inline-block;
+    position: relative; 
+    transition: all .4s;
+}
+
+
+#movieList .nav li a{
+    color: var(--clr-font-dark) !important;
+    text-decoration: none;
+    font-size:25px;
+    font-weight: 700;
+    transition: font-size .4s;
+}
+
+
+#movieList .nav li a.active{
+    color: var(--clr-font-hover) !important;
+    font-size:30px;
+    text-decoration: underline;
+}
+
+#movieList .nav li a:hover{
+    font-size:30px;
+}
+
+/* MOVIE CARDS------------------------------ */
+#movieList .card.movie-card{
+    background-color: transparent;
+    border: 1px solid  rgba(255, 255, 255, 0.2);
+}
+
+#movieList .card.movie-card .card-title{
+    color: var(--clr-font-dark);
+}
+
+/* MODAL TRAILER------------------------------ */
+.movieListModal .ant-modal-header{
+    display: none;
+}
+.movieListModal .ant-modal-body{
+    padding:0px !important; 
+}
+.movieListModal .ant-modal-close img{
+    width: 3em;
+    /* position: absolute;
+    top: -21px;
+    right: -26px; */
+}
+
+.movieListModal .ant-modal-close{
+    top: -24px;
+    right: -25px;
+}

@@ -1,0 +1,134 @@
+:root {
+    --header-fs-1: 15px;
+    --header-px: 1rem;
+    --header-py: 0.5rem;
+    --header-mx: 1rem;
+    --header-clr-bg: #22303f;
+    --header-clr-bg-hov: #22303f;
+}
+
+@media screen and (min-width:768px) {
+    :root {
+        --header-clr-bg: rgba(34, 48, 63, .7);
+        --header-clr-bg-hov: #22303f;
+        --header-fs-1: 18px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    :root {
+        --header-px: 3rem;
+    }
+}
+
+header.home-header {
+    background-color: var(--header-clr-bg);
+    position: sticky;
+    width: 100%;
+    top: 0px;
+    z-index: 20;
+    transition: all .5s;
+}
+
+@media screen and (min-width:768px) {
+    header.home-header {
+        position: fixed;
+    }
+}
+
+header.home-header:hover {
+    background-color: var(--header-clr-bg-hov);
+}
+
+header.home-header .username {
+    font-size: var(--header-fs-1);
+    color:var(--clr-font-hover);
+}
+
+/* NAV BAR BRAND--------------------------- */
+header.home-header nav.navbar {
+    padding: var(--header-py) var(--header-px);
+    position: relative;
+}
+
+header.home-header .navbar-brand img {
+    width: 150px;
+}
+
+/* NAV BAR ITEMS--------------------------- */
+header.home-header .navbar-nav .nav-item {
+    transition: color .5s;
+    position: relative;
+}
+
+header.home-header .navbar-nav .nav-item::before {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: 3px;
+    background-color: white;
+    top: 45%;
+    transition: all .3s;
+}
+
+header.home-header .navbar-nav .nav-item a {
+    color: var(--clr-font-dark) !important;
+    font-size: var(--header-fs-1);
+    transition: transform .3s;
+}
+
+@media screen and (max-width:575px) {
+    header.home-header .navbar-nav .nav-item:hover {
+        background-color: #17202b;
+
+    }
+
+    header.home-header .navbar-nav .nav-item:hover::before {
+        width: 13px;
+    }
+
+    header.home-header .navbar-nav .nav-item:hover a {
+        transform: translateX(18px);
+    }
+}
+
+@media screen and (min-width:768px) {
+    header.home-header .navbar-nav .nav-item {
+        margin-right: var(--header-mx)
+    }
+
+    header.home-header .navbar-nav .nav-item a.active {
+        color: var(--clr-font-hover) !important;
+    }
+
+    header.home-header .navbar-nav .nav-item:hover a {
+        color: var(--clr-font-hover) !important;
+    }
+}
+
+/* NAV BAR TOGGLE--------------------------- */
+header.home-header nav .navbar-toggler {
+    border-color: #ffffff75 !important;
+}
+
+
+.theme-toggler {
+    position: absolute;
+    top: 25px;
+    right: 4.5em;
+    margin-left: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 20px;
+    color: #212529;
+}
+
+.theme-toggler i:nth-child(2) {
+    display: none;
+    color: #4867b0;
+}
+
+.theme-toggler i:nth-child(2):hover {
+    display: none;
+    color: #FD4766;
+}
