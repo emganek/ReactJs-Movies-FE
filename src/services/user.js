@@ -11,7 +11,7 @@ export const loginAPI = (data) =>{
 
 export const registerAPI = (data) =>{
     return request({
-        url:'QuanLyNguoiDung/DangKy',
+        url:'auth/register',
         method:'POST',
         data,
     })
