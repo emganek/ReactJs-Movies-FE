@@ -2,7 +2,7 @@ import { request } from "../configs/axios"
 
 export const fetchCarouselImagesAPI = () =>{
     return request({
-        url: 'QuanLyPhim/LayDanhSachBanner',
+        url: 'movie/banner',
         method: 'GET',
     })
 }

@@ -3,7 +3,7 @@ import { MA_NHOM } from "../constants/common"
 
 export const loginAPI = (data) =>{
     return request({
-        url:'QuanLyNguoiDung/DangNhap',
+        url:'/auth/login',
         method: 'POST',
         data: data,
     })
@@ -11,7 +11,7 @@ export const loginAPI = (data) =>{
 
 export const registerAPI = (data) =>{
     return request({
-        url:'auth/register',
+        url:'user/register',
         method:'POST',
         data,
     })

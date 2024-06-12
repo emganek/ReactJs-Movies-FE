@@ -35,8 +35,8 @@ export default function MovieSchedule() {
     const [form] = Form.useForm();
     const [componentSize, setComponentSize] = useState('default');
 
-    const onFormLayoutChange = ({ size }) => {
-        setComponentSize(size);
+    const onFormLayoutChange = (evt) => {
+        setComponentSize(evt.size);
     };
     //FORM CONFIG------------------------------------------END
 
@@ -44,14 +44,12 @@ export default function MovieSchedule() {
     const handleSubmit = async (evt) => {
         let data = {
             maPhim: params,
-            ngayChieuGioChieu: "",
+            ngayChieuGioChieu: undefined,
             maRap: 0,
             giaVe: 0,
         }
 
-        data = {...data, maRap:evt.maRap, giaVe:evt.giaVe, ngayChieuGioChieu:moment(evt.ngayChieuGioChieu).format("DD/MM/YYYY HH:MM:SS")};
-
-        console.log(data)
+        data = {...data, maRap:evt.maRap, giaVe:evt.giaVe, ngayChieuGioChieu:moment(evt.ngayChieuGioChieu).toDate()};
 
         try {
             await postScheduleAPI(data);
@@ -103,12 +101,12 @@ export default function MovieSchedule() {
 
 
             <Form.Item label="Cinemas">
-                <Select defaultValue="Please choose your option" options={state.cinemas.map(ele => ({label:ele.maHeThongRap, value:ele.maHeThongRap}))} onChange={handleCinemasChange}/>
+                <Select defaultValue="Please choose your option" options={state.cinemas.map(ele => ({label:ele.tenHeThongRap, value:ele.maHeThongRap}))} onChange={handleCinemasChange}/>
             </Form.Item>
-            <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="maRap" label="Location">
-                <Select  options={state.location.map(ele => ({label:ele.tenCumRap, value:ele.maCumRap}))} />
+            <Form.Item rules={[{ required: true, message: 'Please input cinema location!' }]} name="maRap" label="Location">
+                <Select  options={state.location.map(ele => ({label:ele.tenRap, value:ele.maRap}))} />
             </Form.Item>
-            <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="ngayChieGioChieu" label="Schedule">
+            <Form.Item rules={[{ required: true, message: 'Please input your expected time!' }]} name="ngayChieuGioChieu" label="Schedule">
                 <DatePicker showTime />
             </Form.Item>
             <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="giaVe" label="Price">

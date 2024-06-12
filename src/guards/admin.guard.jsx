@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import { notification } from 'antd';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { notification } from 'antd';
 
 export default function AdminGuard() {
     const navigate = useNavigate();

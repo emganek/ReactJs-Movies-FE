@@ -2,7 +2,7 @@ import { request } from "../configs/axios"
 
 export const postScheduleAPI = (data) =>{
     return request({
-        url:`QuanLyDatVe/TaoLichChieu`,
+        url:`theater/schedule`,
         method:'POST',
         data,
     })

@@ -5,7 +5,7 @@ import { MA_NHOM } from "../constants/common";
 export const fetchMovieListAPI = (keyword = "") => {
     if (keyword === ""){
         return request({
-            url: `QuanLyPhim/LayDanhSachPhim?maNhom=${MA_NHOM}`,
+            url: `movie?maNhom=${MA_NHOM}`,
             method: "GET",
         })
     }
@@ -19,7 +19,7 @@ export const fetchMovieListAPI = (keyword = "") => {
 
 export const fetchMovieDetaiAPI = (maPhim) => {
     return request({
-        url: `QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
+        url: `movie/detail?MaPhim=${maPhim}`,
         method: "GET",
     })
 }
