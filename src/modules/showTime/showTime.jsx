@@ -27,29 +27,29 @@ export default function ShowTime() {
     }
 
     const renderContent = () => {
-        return showTime.heThongRapChieu?.map((ele, index) => {
+        return showTime?.heThongRapChieu?.map((ele, index) => {
             return (
                 <div key={ele.maHeThongRap} className={`tab-pane fade show ${index === 0 && 'active'}`} id={`${ele.maHeThongRap}`} role="tabpanel">
                     {
-                        ele.cumRapChieu.map((item) => {
+                        ele.heThongRap.filter(item => item.suatChieu.length).map((item) => {
                             return (
-                                <div key={item.maCumRap} className="row mb-5">
+                                <div key={item.maRap} className="row mb-5">
                                     <div className="col-3 col-md-2 mb-3">
-                                        <img className="img-fluid rounded" src={item.hinhAnh} />
+                                        <img className="img-fluid rounded" src={item?.hinhAnh} />
                                     </div>
                                     <div className="rap-info col-9 col-md-10 pl-0 mb-3">
-                                        <h5>{item.tenCumRap}</h5>
+                                        <h5>{item.tenRap}</h5>
                                         <span>{item.diaChi}</span>
                                     </div>
                                     <div className='col-3 col-md-0'></div>
                                     <div className="col-9 col-md-12 pl-0">
                                         <div className="row">
                                             {
-                                                item.lichChieuPhim.map(schedule => {
+                                                item.suatChieu.map(schedule => {
                                                     return (
-                                                        <div key={schedule.maLichChieu} className="col-md-4 mb-2">
+                                                        <div key={schedule.id} className="col-md-4 mb-2">
 
-                                                            <Link to={`/booking/${schedule.maLichChieu}`} >
+                                                            <Link to={`/booking/${schedule.id}`} >
                                                                 {moment(schedule.ngayChieuGioChieu).format('LLL')}</Link>
                                                         </div>
                                                     )
@@ -70,12 +70,12 @@ export default function ShowTime() {
         <div className="row">
             <div className="col-md-3">
                 <div className="nav d-flex nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    {renderTabs()}
+                    {showTime ? renderTabs() : ''}
                 </div>
             </div>
             <div className="col-md-9 mt-4">
                 <div className="tab-content" id="v-pills-tabContent">
-                    {renderContent()}
+                    {showTime ? renderContent() : ''}
                 </div>
             </div>
         </div>

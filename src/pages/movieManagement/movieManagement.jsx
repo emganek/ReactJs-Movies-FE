@@ -12,7 +12,6 @@ export default function MovieManagement() {
 
   //TABLE HANDLER------------------------------------------------BEGIN---------
   const handleChange = (pagination, filters, sorter) => {
-    // console.log('Various parameters', pagination, filters, sorter);
     setSortedInfo(sorter);
   };
 

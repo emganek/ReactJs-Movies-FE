@@ -23,7 +23,7 @@ export default function Booking() {
     const handleSelect = (selectedChair) => {
         let tempList = [...selectedChairList];
 
-        const index = tempList.findIndex(ele => ele.tenGhe === selectedChair.tenGhe);
+        const index = tempList.findIndex(ele => ele.soGhe === selectedChair.soGhe);
 
         if (index === -1) {
             tempList = [...tempList, selectedChair]
@@ -45,22 +45,28 @@ export default function Booking() {
         const danhSachVe = selectedChairList.map(ele => {
             return (
                 {
-                    maGhe: ele.maGhe,
+                    soGhe: ele.soGhe,
                     giaVe: ele.giaVe,
                 }
             )
         });
 
         const data = {
-            "maLichChieu": roomList.thongTinPhim.maLichChieu,
+            "maLichChieu": roomList.id,
             "danhSachVe": danhSachVe,
         }
 
-        await bookingTicketAPI(data);
-        navigate('/home');
-        notification.success({
-            message: "Đặt vé thành công"
-        })
+        try {
+            await bookingTicketAPI(data);
+            navigate('/home');
+            notification.success({
+                message: "Booking success"
+            })
+        } catch (error) {
+            notification.error({
+                message: "Booking failed"
+            })
+        }
     }
 
     return Object.keys(roomList).length !== 0 ?
@@ -69,12 +75,12 @@ export default function Booking() {
                 <div className="booking-ticket-wrapper">
                     <div className="row w-75 mx-auto my-5">
                         <div className="col-md-4 cinema-info">
-                            <img className="img-fluid" src={roomList.thongTinPhim.hinhAnh} alt="alt" />
-                            <h4>{roomList.thongTinPhim.tenPhim}</h4>
-                            <h5><span>Cinemas: </span>{roomList.thongTinPhim.tenCumRap} </h5>
-                            <h6><span>Room: </span> {roomList.thongTinPhim.tenRap}</h6>
+                            <img className="img-fluid" src={roomList.phim.hinhAnh} alt="alt" />
+                            <h4>{roomList.phim.tenPhim}</h4>
+                            <h5><span>Cinemas: </span>{roomList.rap.tenCumRap} </h5>
+                            <h6><span>Room: </span> {roomList.rap.tenRap}</h6>
                             <p><span>Selected chairs:</span> {selectedChairList.map((ele) => {
-                                return <span key={ele.tenGhe} className="badge badge-warning mr-2">{ele.tenGhe}</span>
+                                return <span key={ele.soGhe} className="badge badge-warning mr-2">{ele.soGhe}</span>
                             })}</p>
                             <p>Total price:
                                 <span> {calTotalPrice().toLocaleString()}</span>
@@ -104,9 +110,9 @@ export default function Booking() {
                             </div>
                             <div className="ds-ghe">
                                 {
-                                    roomList.danhSachGhe.map((ele, index) => {
+                                    roomList.danhSachChoNgoi.map((ele, index) => {
                                         return (
-                                            <React.Fragment key={ele.tenGhe}>
+                                            <React.Fragment key={ele.soGhe}>
                                                 <Chair handleSelect={handleSelect} item={ele} />
                                                 {(index + 1) % 16 === 0 && <br />}
                                             </React.Fragment>

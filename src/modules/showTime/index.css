@@ -16,8 +16,12 @@
     }
 
     #showtime #v-pills-tab img{
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50% !important;
+        padding: 8px;
     }
 }
 

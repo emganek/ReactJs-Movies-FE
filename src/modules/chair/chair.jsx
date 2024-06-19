@@ -7,7 +7,7 @@ export default function Chair(props) {
     const populateClass = () =>{
         let defaultClass = 'ghe';
 
-        if (props.item.loaiGhe === 'Vip'){
+        if (props.item.loaiGhe === 'vip'){
             defaultClass += ' gheVip';
         }
 
@@ -28,6 +28,6 @@ export default function Chair(props) {
     }
 
     return (
-        <button disabled={props.item.daDat} onClick={() => handleOnclick()} key={props.item.tenGhe} className={populateClass()}>{props.item.tenGhe}</button>
+        <button disabled={props.item.daDat} onClick={() => handleOnclick()} key={props.item.soGhe} className={populateClass()}>{props.item.soGhe}</button>
     )
 }

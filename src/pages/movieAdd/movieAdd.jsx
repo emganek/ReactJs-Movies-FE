@@ -57,7 +57,6 @@ export default function MovieAdd() {
             const result = await uploadNewMovieAPI(formData);
             notification.success({ message: "New movie is uploaded successfully" })
         } catch (error) {
-            console.log(error);
             notification.error({
                 message: "Upload new movie fail!",
                 description: error.response.data.content,

@@ -56,7 +56,6 @@ export default function MovieSchedule() {
             notification.success({ message: "Add new schedule successfully" });
             form.resetFields();
         } catch (error) {
-            console.log(error);
             notification.error({
                 message: "Fail to add new schedule!",
                 description: error.response.data.content,
