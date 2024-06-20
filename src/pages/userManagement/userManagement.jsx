@@ -62,8 +62,8 @@ export default function UserManagement() {
     },
     {
       title: 'Phone Number',
-      dataIndex: 'soDT',
-      key: 'soDT',
+      dataIndex: 'soDt',
+      key: 'soDt',
       ellipsis: true,
     },
     {

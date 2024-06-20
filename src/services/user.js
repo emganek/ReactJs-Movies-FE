@@ -56,22 +56,29 @@ export const deleteUserAPI = (taiKhoan) => {
 
 export const fetchUserTypesAPI = () => {
     return request({
-        url: `QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`,
+        url: `user/roles`,
         method: "GET",
     })
 }
 
 export const fetchAccountInfoAPI = () => {
     return request({
-        url: `QuanLyNguoiDung/ThongTinTaiKhoan`,
-        method: "POST",
+        url: `user/account-info`,
+        method: "GET",
+    })
+}
+
+export const fetchBookedMoviesAPI = () => {
+    return request({
+        url: `user/booked-movies`,
+        method: "GET",
     })
 }
 
 
 export const updateAccountInfoAPI = (data) => {
     return request({
-        url: `QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+        url: `user/account-info`,
         method: "PUT",
         data,
     })

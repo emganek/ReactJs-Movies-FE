@@ -16,7 +16,7 @@
      color:var(--clr-font-dark) !important;
 }
 
-#account-info  input.ant-input[disabled], #account-info  #soDT[disabled], #account-info  .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+#account-info  input.ant-input[disabled], #account-info  #soDt[disabled], #account-info  .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector{
     color:rgba(0, 0, 0, 0.5) !important;
 }
 

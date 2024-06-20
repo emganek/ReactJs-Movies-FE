@@ -12,7 +12,7 @@ export default function AdminGuard() {
             return navigate('/login');
         }
 
-        if (reduxState.userInfo && reduxState.userInfo.maLoaiNguoiDung !== 'QuanTri') {
+        if (reduxState.userInfo && reduxState.userInfo.maLoaiNguoiDung.value !== 'QuanTri') {
             notification.error({
                 message: 'You do not have permission to access Admin Page!',
             });

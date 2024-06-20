@@ -37,7 +37,7 @@ export default function UserEdit(props) {
             matKhau: " ",
             hoTen: " ",
             email: " ",
-            soDT: " ",
+            soDt: " ",
             maLoaiNguoiDung: " ",
         }
 
@@ -111,7 +111,7 @@ export default function UserEdit(props) {
             <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please input your Email!' }]}>
                 <Input name='email' />
             </Form.Item>
-            <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="soDT" label="Phone Number">
+            <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="soDt" label="Phone Number">
                 <InputNumber style={{ width: '100%' }} name='giaVe' />
             </Form.Item>
             <Form.Item rules={[{ required: true, message: 'Please input your Type of user!' }]} name="maLoaiNguoiDung" label="Type of user">

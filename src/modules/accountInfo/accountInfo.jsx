@@ -46,7 +46,7 @@ export default function AccountInfo() {
             matKhau: " ",
             hoTen: " ",
             email: " ",
-            soDT: " ",
+            soDt: " ",
             maLoaiNguoiDung: " ",
         }
 
@@ -55,7 +55,7 @@ export default function AccountInfo() {
         localStorage.setItem(ACCOUNT_INFO_KEY, JSON.stringify(result));
         for (let key in templateData) {
             form.setFieldsValue({
-                [key]: result[key],
+                [key]:  key == 'maLoaiNguoiDung' ? result[key].value : result[key],
             });
         }
     }
@@ -121,11 +121,11 @@ export default function AccountInfo() {
             <Form.Item label="Email" name="email" rules={[{ required: true, message: 'Please input your Email!' }]}>
                 <Input disabled={!isEditing} name='email' />
             </Form.Item>
-            <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="soDT" label="Phone Number">
+            <Form.Item rules={[{ required: true, message: 'Please input your Price!' }]} name="soDt" label="Phone Number">
                 <InputNumber disabled={!isEditing} style={{ width: '100%' }} name='giaVe' />
             </Form.Item>
             <Form.Item rules={[{ required: true, message: 'Please input your Type of user!' }]} name="maLoaiNguoiDung" label="Type of user">
-                <Select disabled={!isEditing} options={typesUser.map(ele => ({ label: ele.tenLoai, value: ele.maLoaiNguoiDung }))} />
+                <Select disabled={!isEditing} options={typesUser.map(ele => ({ label: ele.label, value: ele.id }))} />
             </Form.Item>
             { }
             <Form.Item colon={false} label=" ">
