@@ -45,11 +45,16 @@ export default function MovieAdd() {
         let formData = new FormData();
 
         for (let key in state) {
-            if (key !== "hinhAnh") {
-                formData.append(key, state[key])
+            if (key === "hinhAnh") {
+                if (state.hinhAnh !== null) {
+                    formData.append('File', state.hinhAnh, state.hinhAnh.name)
+                }
+            }
+            else if(key === 'ngayKhoiChieu'){
+                formData.append(key, moment(state[key]).toISOString());
             }
             else {
-                formData.append('File', state.hinhAnh, state.hinhAnh.name)
+                formData.append(key, state[key])
             }
         }
 
@@ -67,7 +72,7 @@ export default function MovieAdd() {
     const handleChangeReleaseDate = (date, dateString) => {
         let data = ""
         if (dateString) {
-            data = moment(dateString).format('DD/MM/YYYY');
+            data = moment(dateString).toDate();
         }
         setState({ ...state, ngayKhoiChieu: data });
     };
@@ -119,6 +124,9 @@ export default function MovieAdd() {
             </Form.Item>
             <Form.Item rules={[{ required: true, message: 'Please input your Movie Name!' }]} label="Movie Name" name="tenPhim">
                 <Input onChange={handleInputChange} name='tenPhim' />
+            </Form.Item>
+            <Form.Item rules={[{ required: true, message: 'Please input your Movie Code!' }]} label="Movie code" name="maPhim">
+                <Input onChange={handleInputChange} name='maPhim' />
             </Form.Item>
             <Form.Item rules={[{ required: true, message: 'Please input your Trailer link!' }]} name="trailer" label="Trailer link">
                 <Input onChange={handleInputChange} name='trailer' />

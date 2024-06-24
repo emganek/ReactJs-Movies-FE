@@ -65,7 +65,7 @@ export default function MovieManagement() {
         return (
           <React.Fragment key={index}>
             <EditOutlined onClick={() => navigate(`/admin/movie-edit/${item.maPhim}`)} className='edit-button mr-3' />
-            <Popconfirm title={`Are you sure to delete ${item.tenPhim}`} onConfirm={() => confirmDelete(item.maPhim)} okText="Yes" cancelText="No">
+            <Popconfirm title={`Are you sure to delete ${item.tenPhim}`} onConfirm={() => confirmDelete(item.id)} okText="Yes" cancelText="No">
               <DeleteOutlined className='delete-button mr-3' />
             </Popconfirm>
             <ScheduleOutlined onClick={() => navigate(`/admin/movie-schedule/${item.maPhim}`)} className='schedule-button mr-3' />
@@ -88,13 +88,13 @@ export default function MovieManagement() {
     setMovieList(movieList);
   }
 
-  const confirmDelete = (maPhim) => {
-    handleDelete(maPhim);
+  const confirmDelete = (id) => {
+    handleDelete(id);
   }
 
-  const handleDelete = async (maPhim) => {
+  const handleDelete = async (id) => {
     try {
-      await deleteMovieAPI(maPhim);
+      await deleteMovieAPI(id);
       notification.success({ message: `Movie is deleted successfully!` });
       fetchMovieList();
     } catch (error) {

@@ -11,13 +11,13 @@ import {
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { MA_NHOM } from '../../constants/common';
-import { fetchMovieDetaiAPI, updateMovieAPI } from '../../services/movies';
+import { fetchMovieDetailAPI, updateMovieAPI } from '../../services/movies';
 
 export default function MovieEdit() {
     const params = useParams().movieID;
     const navigate = useNavigate();
     const [image, setImage] = useState("");
+    const [movieId, setMovieId] = useState("");
 
 
     //FORM CONFIG------------------------------------------BEGIN
@@ -33,7 +33,6 @@ export default function MovieEdit() {
         hot: false,
         danhGia: 0,
         hinhAnh: {},
-        maNhom: MA_NHOM,
         maPhim: '',
     })
 
@@ -48,8 +47,9 @@ export default function MovieEdit() {
     }, []);
 
     const fetchMovieDetail = async () => {
-        let result = await fetchMovieDetaiAPI(params);
+        let result = await fetchMovieDetailAPI(params);
         result = result.data.content;
+        setMovieId(result.id);
         let newState = { ...state };
 
         for (let key in state) {
@@ -57,7 +57,7 @@ export default function MovieEdit() {
                 form.setFieldsValue({
                     [key]: moment(result[key]),
                 });
-                newState = { ...newState, [key]: moment(result[key]).format("DD/MM/YYYY") };
+                newState = { ...newState, [key]: moment(result[key]).toDate() };
             }
             else if (key === "hinhAnh") {
                 setImage(result[key]);
@@ -84,15 +84,19 @@ export default function MovieEdit() {
         let formData = new FormData();
 
         for (let key in state) {
-            if (key !== "hinhAnh") {
-                formData.append(key, state[key])
-            }
-            else {
+            if (key === "hinhAnh") {
                 if (state.hinhAnh !== null) {
                     formData.append('File', state.hinhAnh, state.hinhAnh.name)
                 }
             }
+            else if(key === 'ngayKhoiChieu'){
+                formData.append(key, moment(state[key]).toISOString());
+            }
+            else {
+                formData.append(key, state[key])
+            }
         }
+        formData.append('id', movieId);
 
         try {
             await updateMovieAPI(formData);
@@ -109,7 +113,7 @@ export default function MovieEdit() {
     const handleChangeReleaseDate = (date, dateString) => {
         let data = ""
         if (dateString) {
-            data = moment(dateString).format('DD/MM/YYYY');
+            data = moment(dateString).toDate();
         }
         setState({ ...state, ngayKhoiChieu: data });
     };

@@ -71,6 +71,13 @@ export default function UserManagement() {
       dataIndex: 'maLoaiNguoiDung',
       key: 'maLoaiNguoiDung',
       ellipsis: true,
+      render: (text, item, index) => {
+        return (
+          <React.Fragment key={index}>
+            <div>{item.maLoaiNguoiDung.label}</div>
+          </React.Fragment>
+        )
+      },
     },
     {
       title: 'Acions',

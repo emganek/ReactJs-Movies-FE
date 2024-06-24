@@ -20,13 +20,13 @@ export const registerAPI = (data) =>{
 export const fetchUserListAPI = (keyword = "") => {
     if (keyword === ""){
         return request({
-            url: `QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${MA_NHOM}`,
+            url: `user-management`,
             method: "GET",
         })
     }
     else{
         return request({
-            url: `QuanLyNguoiDung/LayDanhSachNguoiDung?maNhom=${MA_NHOM}&tuKhoa=${keyword}`,
+            url: `user-management?fullName=${keyword}`,
             method: "GET",
         })
     }
@@ -34,22 +34,22 @@ export const fetchUserListAPI = (keyword = "") => {
 
 export const fetchUserInfoAPI = (taiKhoan) => {
     return request({
-        url: `QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${taiKhoan}`,
-        method: "POST",
+        url: `user-management/account-info?taiKhoan=${taiKhoan}`,
+        method: "GET",
     })
 }
 
-export const updateUserInfoAPI = (data) => {
+export const updateUserInfoAPI = (taiKhoan, data) => {
     return request({
-        url: `QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
-        method: "POST",
+        url: `user-management/account-info`,
+        method: "PUT",
         data,
     })
 }
 
 export const deleteUserAPI = (taiKhoan) => {
     return request({
-        url: `QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+        url: `user-management/account-info?taiKhoan=${taiKhoan}`,
         method: "DELETE",
     })
 }

@@ -11,13 +11,13 @@ export const fetchMovieListAPI = (keyword = "") => {
     }
     else{
         return request({
-            url: `QuanLyPhim/LayDanhSachPhim?maNhom=${MA_NHOM}&tenPhim=${keyword}`,
+            url: `movie?tenPhim=${keyword}`,
             method: "GET",
         })
     }
 }
 
-export const fetchMovieDetaiAPI = (maPhim) => {
+export const fetchMovieDetailAPI = (maPhim) => {
     return request({
         url: `movie/detail?MaPhim=${maPhim}`,
         method: "GET",
@@ -26,23 +26,23 @@ export const fetchMovieDetaiAPI = (maPhim) => {
 
 export const uploadNewMovieAPI = (data) => {
     return request({
-        url: `QuanLyPhim/ThemPhimUploadHinh`,
-        method: "POST",
+        url: `movie`,
+        method: "PUT",
         data,
     })
 }
 
 export const updateMovieAPI = (data) => {
     return request({
-        url: `QuanLyPhim/CapNhatPhimUpload`,
+        url: `movie`,
         method: "POST",
         data,
     })
 }
 
-export const deleteMovieAPI = (maPhim) => {
+export const deleteMovieAPI = (id) => {
     return request({
-        url: `QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+        url: `movie?id=${id}`,
         method: "DELETE",
     })
 }

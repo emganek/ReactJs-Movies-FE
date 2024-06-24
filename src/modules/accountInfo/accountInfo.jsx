@@ -55,7 +55,7 @@ export default function AccountInfo() {
         localStorage.setItem(ACCOUNT_INFO_KEY, JSON.stringify(result));
         for (let key in templateData) {
             form.setFieldsValue({
-                [key]:  key == 'maLoaiNguoiDung' ? result[key].value : result[key],
+                [key]:  key == 'maLoaiNguoiDung' ? result[key].id : result[key],
             });
         }
     }

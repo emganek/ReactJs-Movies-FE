@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetaiAPI } from '../../services/movies';
+import { fetchMovieDetailAPI } from '../../services/movies';
 import './index.css';
 import moment from 'moment';
 
@@ -14,7 +14,7 @@ export default function MovieDetail() {
     },[]);
 
     const fetchMovieDetail = async () =>{
-        const data = await (await fetchMovieDetaiAPI(params)).data.content;
+        const data = await (await fetchMovieDetailAPI(params)).data.content;
         setMovieDetail(data)
     }
 

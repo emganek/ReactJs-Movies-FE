@@ -19,6 +19,7 @@ export default function UserEdit(props) {
     //FORM CONFIG------------------------------------------BEGIN
     const [form] = Form.useForm();
     const [componentSize, setComponentSize] = useState('default');
+    const [userId, setUserId] = useState('');
     const [state, setState] = useState([])
 
     const onFormLayoutChange = ({ size }) => {
@@ -46,9 +47,11 @@ export default function UserEdit(props) {
 
         for (let key in templateData) {
             form.setFieldsValue({
-                [key]: result[key],
+                [key]: key == 'maLoaiNguoiDung' ? result[key].id : result[key]
             });
         }
+
+        setUserId(result['id']);
     }
 
     const fetchUserTypes = async () => {
@@ -60,9 +63,10 @@ export default function UserEdit(props) {
     const handleSubmit = async (evt) => {
         let data = {...evt, maNhom: MA_NHOM};
         delete data.size;
+        data.id = userId;
 
         try {
-            await updateUserInfoAPI(data);
+            await updateUserInfoAPI(params, data);
             notification.success({ message: "User information is updated successfully" });
             navigate("/admin/user-management");
         } catch (error) {
@@ -115,7 +119,7 @@ export default function UserEdit(props) {
                 <InputNumber style={{ width: '100%' }} name='giaVe' />
             </Form.Item>
             <Form.Item rules={[{ required: true, message: 'Please input your Type of user!' }]} name="maLoaiNguoiDung" label="Type of user">
-                <Select options={state.map(ele => ({ label: ele.tenLoai, value: ele.maLoaiNguoiDung }))} />
+                <Select options={state.map(ele => ({ label: ele.label, value: ele.id }))} />
             </Form.Item>
             <Form.Item colon={false} label=" ">
                 <Button type='primary' htmlType='submit'>Update</Button>
