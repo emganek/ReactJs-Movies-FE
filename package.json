@@ -21,8 +21,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:dev": "cross-env REACT_APP_ENVIRONMENT=dev react-scripts start",
+    "start:prod": "cross-env REACT_APP_ENVIRONMENT=prod react-scripts start",
+    "build": "cross-env REACT_APP_ENVIRONMENT=prod react-scripts build --max-old-space-size=1024",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -43,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

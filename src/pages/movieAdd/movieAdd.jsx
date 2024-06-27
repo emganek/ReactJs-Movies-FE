@@ -13,22 +13,26 @@ import React, { useState } from 'react';
 import { MA_NHOM } from '../../constants/common';
 import { uploadNewMovieAPI } from '../../services/movies';
 import './index.css';
+import { useNavigate } from 'react-router-dom';
+
+const INITIAL_VALUE = {
+    tenPhim: '',
+    trailer: '',
+    moTa: '',
+    ngayKhoiChieu: '',
+    dangChieu: false,
+    sapChieu: false,
+    hot: false,
+    danhGia: 0,
+    hinhAnh: {},
+    maNhom: MA_NHOM,
+}
 
 export default function MovieAdd() {
+    const navigate = useNavigate();
     const [componentSize, setComponentSize] = useState('default');
     const [image, setImage] = useState("");
-    const [state, setState] = useState({
-        tenPhim: '',
-        trailer: '',
-        moTa: '',
-        ngayKhoiChieu: '',
-        dangChieu: false,
-        sapChieu: false,
-        hot: false,
-        danhGia: 0,
-        hinhAnh: {},
-        maNhom: MA_NHOM,
-    })
+    const [state, setState] = useState({...INITIAL_VALUE})
 
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
@@ -60,7 +64,8 @@ export default function MovieAdd() {
 
         try {
             const result = await uploadNewMovieAPI(formData);
-            notification.success({ message: "New movie is uploaded successfully" })
+            notification.success({ message: "New movie is uploaded successfully" });
+            navigate("/admin/movie-add");
         } catch (error) {
             notification.error({
                 message: "Upload new movie fail!",
