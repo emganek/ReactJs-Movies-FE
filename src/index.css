@@ -19,6 +19,12 @@ code {
   margin: 0px;
 }
 
+#root{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 :root {
   --clr-font-dark: white;
   --clr-font-detail-dark:#b7b7b7;

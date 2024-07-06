@@ -13,21 +13,8 @@ export default function ShowTime() {
     }, []);
 
     const fetchMovieShowTime = async () => {
-        console.log('fetchMovieShowTime');
-        // const data = await (await fetchMovieShowTimeAPI(params))?.data?.content;
-        fetchMovieShowTimeAPI(params)
-        .then(
-         (data) => {
-            console.log('fetchMoviesShowTimeAPI success', data);
-            data && setShowTime(data)
-         }
-        )
-        .catch(
-            (error) => {
-                console.log('fetchMoviesShowTimeAPI fail', error)
-            }
-        )
-        // data && setShowTime(data);
+        const data = await (await fetchMovieShowTimeAPI(params))?.data?.content;
+        data && setShowTime(data);
     };
 
     const renderTabs = () => {

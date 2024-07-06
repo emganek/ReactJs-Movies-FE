@@ -1,3 +1,7 @@
+#movieList {
+    flex-grow: 1;
+}
+
 #movieList .nav li {
     color: var(--clr-font-dark) !important;
     text-decoration: none;
@@ -6,7 +10,6 @@
     position: relative; 
     transition: all .4s;
 }
-
 
 #movieList .nav li a{
     color: var(--clr-font-dark) !important;

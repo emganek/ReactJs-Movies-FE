@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { fetchMovieListAPI } from '../../services/movies';
 import "./index.css"
 import { Modal } from 'antd';
+import { BASE_URL } from '../../constants/common';
 
 
 export default function MovieList() {
@@ -14,6 +15,8 @@ export default function MovieList() {
     const [trailerLink, setTrailerLink] = useState("");
 
     const iframeRef = useRef(null)
+
+    console.log('base url', BASE_URL)
 
     //HANDLE MODAL MOVIE--------------------------------BEGIN
     const showModal = () => {
