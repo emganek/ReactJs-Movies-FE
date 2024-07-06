@@ -14,8 +14,21 @@ export default function MovieDetail() {
     },[]);
 
     const fetchMovieDetail = async () =>{
-        const data = await (await fetchMovieDetailAPI(params)).data.content;
-        setMovieDetail(data)
+        console.log('fetchMovieDetail');
+        // const data = await (await fetchMovieDetailAPI(params))?.data?.content;
+        // data && setMovieDetail(data)
+        fetchMovieDetailAPI(params)
+        .then(
+         (data) => {
+            console.log('fetchMovieDetailAPI success', data);
+            data && setMovieDetail(data.data.content)
+         }
+        )
+        .catch(
+            (error) => {
+                console.log('fetchMovieDetailAPI fail', error)
+            }
+        )
     }
 
     return (
