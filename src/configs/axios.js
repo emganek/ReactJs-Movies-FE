@@ -51,7 +51,7 @@ request.interceptors.response.use(
     let originalRequest = error.config;
     let userInfo = localStorage.getItem(USER_INFO_KEY);
     userInfo = JSON.parse(userInfo);
-    if (userInfo?.hasRefreshToken && error?.response?.status === 401) {
+    if (userInfo?.hasRefreshToken && error?.response?.status === 401 && !error.response.customCode) {
       if (!isRefreshTokenProcessing) {
         isRefreshTokenProcessing = true;
         refreshTokenAPI({
