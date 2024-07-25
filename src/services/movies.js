@@ -46,3 +46,10 @@ export const deleteMovieAPI = (id) => {
         method: "DELETE",
     })
 }
+
+export const createSessionAPI = (id) => {
+    return request({
+        url: `create-session`,
+        method: "GET",
+    })
+}

@@ -1,6 +1,11 @@
 import axios from "axios";
-import { ACCOUNT_INFO_KEY, BASE_URL, TOKEN_CYBERSOFT, USER_INFO_KEY } from "../constants/common";
-import { refreshTokenAPI } from "../services/user";
+import {
+  ACCOUNT_INFO_KEY,
+  BASE_URL,
+  TOKEN_CYBERSOFT,
+  USER_INFO_KEY,
+} from "../constants/common";
+import { logoutAPI, refreshTokenAPI } from "../services/user";
 import { store } from "../store/store";
 import { setUserInfoAction } from "../store/actions/user.reducer";
 import { redirectTo } from "../services/navigation";
@@ -8,9 +13,13 @@ import { redirectTo } from "../services/navigation";
 let isRefreshTokenProcessing = false;
 let requestQueue = [];
 
-const logOut = () => {
+export const logOut = async () => {
   isRefreshTokenProcessing = false;
   requestQueue = [];
+  try {
+    await logoutAPI();
+  } catch (error) {}
+
   localStorage.removeItem(USER_INFO_KEY);
   localStorage.removeItem(ACCOUNT_INFO_KEY);
   store.dispatch(setUserInfoAction(null));
@@ -51,8 +60,17 @@ request.interceptors.response.use(
     let originalRequest = error.config;
     let userInfo = localStorage.getItem(USER_INFO_KEY);
     userInfo = JSON.parse(userInfo);
-    if (userInfo?.hasRefreshToken && error?.response?.status === 401 && !error.response.customCode) {
-      if (!isRefreshTokenProcessing) {
+
+    if (
+      userInfo?.hasRefreshToken &&
+      error?.response?.status === 401 &&
+      !error.response.customCode &&
+      !originalRequest.url.includes("auth/logout")
+    ) {
+      if (
+        !isRefreshTokenProcessing &&
+        !originalRequest.url.includes("auth/logout")
+      ) {
         isRefreshTokenProcessing = true;
         refreshTokenAPI({
           id: userInfo.id,
@@ -94,7 +112,10 @@ request.interceptors.response.use(
       });
     }
 
-    if (error?.response?.status === 401) {
+    if (
+      error?.response?.status === 401 &&
+      !originalRequest.url.includes("auth/logout")
+    ) {
       logOut();
     }
 

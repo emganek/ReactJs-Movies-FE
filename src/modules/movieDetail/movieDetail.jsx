@@ -1,46 +1,47 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { fetchMovieDetailAPI } from '../../services/movies';
-import './index.css';
-import moment from 'moment';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchMovieDetailAPI } from "../../services/movies";
+import "./index.css";
+import moment from "moment";
 
 export default function MovieDetail() {
-    const params = useParams().movieID;
+  const params = useParams().movieID;
 
-    const [movieDetail, setMovieDetail] = useState({});
+  const [movieDetail, setMovieDetail] = useState({});
 
-    useEffect(()=>{
-        fetchMovieDetail();
-    },[]);
+  useEffect(() => {
+    fetchMovieDetail();
+  }, []);
 
-    const fetchMovieDetail = async () =>{
-        console.log('fetchMovieDetail');
-        // const data = await (await fetchMovieDetailAPI(params))?.data?.content;
-        // data && setMovieDetail(data)
-        fetchMovieDetailAPI(params)
-        .then(
-         (data) => {
-            console.log('fetchMovieDetailAPI success', data);
-            data && setMovieDetail(data.data.content)
-         }
-        )
-        .catch(
-            (error) => {
-                console.log('fetchMovieDetailAPI fail', error)
-            }
-        )
-    }
+  const fetchMovieDetail = async () => {
+    console.log("fetchMovieDetail");
+    // const data = await (await fetchMovieDetailAPI(params))?.data?.content;
+    // data && setMovieDetail(data)
+    fetchMovieDetailAPI(params)
+      .then((data) => {
+        // console.log('fetchMovieDetailAPI success', data);
+        data && setMovieDetail(data.data.content);
+      })
+      .catch((error) => {
+        // console.log('fetchMovieDetailAPI fail', error)
+      });
+  };
 
-    return (
-        <div className="row">
-            <div className="col-md-3">
-                <img className="w-100" src={movieDetail.hinhAnh} alt='alt' />
-            </div>
-            <div className="col-md-9 mt-4 mt-md-0">
-                <h3 className='movie-detail-tenPhim font-weight-bold'>{movieDetail.tenPhim}</h3>
-                <p className='movie-detail-moTa'>{movieDetail.moTa}</p>
-                <p className='movie-detail-ngayKhoiChieu'><span className='font-weight-bold'>Release day:</span> {moment(movieDetail.ngayKhoiChieu).format('LLL')}</p>
-            </div>
-        </div>
-    )
+  return (
+    <div className="row">
+      <div className="col-md-3">
+        <img className="w-100" src={movieDetail.hinhAnh} alt="alt" />
+      </div>
+      <div className="col-md-9 mt-4 mt-md-0">
+        <h3 className="movie-detail-tenPhim font-weight-bold">
+          {movieDetail.tenPhim}
+        </h3>
+        <p className="movie-detail-moTa">{movieDetail.moTa}</p>
+        <p className="movie-detail-ngayKhoiChieu">
+          <span className="font-weight-bold">Release day:</span>{" "}
+          {moment(movieDetail.ngayKhoiChieu).format("LLL")}
+        </p>
+      </div>
+    </div>
+  );
 }

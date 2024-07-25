@@ -16,8 +16,6 @@ export default function MovieList() {
 
     const iframeRef = useRef(null)
 
-    console.log('base url', BASE_URL)
-
     //HANDLE MODAL MOVIE--------------------------------BEGIN
     const showModal = () => {
         setIsModalVisible(true);

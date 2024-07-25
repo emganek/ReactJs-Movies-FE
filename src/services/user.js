@@ -9,6 +9,14 @@ export const loginAPI = (data) =>{
     })
 }
 
+export const logoutAPI = (data = {}) =>{
+    return request({
+        url:'/auth/logout',
+        method: 'POST',
+        data: data,
+    })
+}
+
 export const refreshTokenAPI = (data) =>{
     return request({
         url:'/auth/refresh-token',
